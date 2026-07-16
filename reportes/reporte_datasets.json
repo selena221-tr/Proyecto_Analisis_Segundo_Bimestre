@@ -1,0 +1,69 @@
+{
+    "ventas_principal": {
+        "filas": 3000888,
+        "columnas": 6,
+        "tipos_datos": {
+            "id": "Int64",
+            "date": "Date",
+            "store_nbr": "Int64",
+            "family": "Categorical",
+            "sales": "Float64",
+            "onpromotion": "Int64"
+        },
+        "nulos": "Sin valores nulos",
+        "duplicados": 0,
+        "porcentaje_duplicados": 0.0
+    },
+    "ventas_54": {
+        "filas": 54,
+        "columnas": 5,
+        "tipos_datos": {
+            "store_nbr": "Int64",
+            "city": "Categorical",
+            "state": "Categorical",
+            "type": "Categorical",
+            "cluster": "Int64"
+        },
+        "nulos": "Sin valores nulos",
+        "duplicados": 0,
+        "porcentaje_duplicados": 0.0
+    },
+    "ventas_feriado": {
+        "filas": 350,
+        "columnas": 6,
+        "tipos_datos": {
+            "date": "Date",
+            "type": "Categorical",
+            "locale": "Categorical",
+            "locale_name": "Categorical",
+            "description": "String",
+            "transferred": "Boolean"
+        },
+        "nulos": "Sin valores nulos",
+        "duplicados": 0,
+        "porcentaje_duplicados": 0.0
+    },
+    "precio_petroleo": {
+        "filas": 1704,
+        "columnas": 2,
+        "tipos_datos": {
+            "date": "Date",
+            "dcoilwtico": "Float64"
+        },
+        "nulos": "Sin valores nulos",
+        "duplicados": 0,
+        "porcentaje_duplicados": 0.0
+    },
+    "transacciones": {
+        "filas": 83488,
+        "columnas": 3,
+        "tipos_datos": {
+            "date": "Date",
+            "store_nbr": "Int64",
+            "transactions": "Int64"
+        },
+        "nulos": "Sin valores nulos",
+        "duplicados": 0,
+        "porcentaje_duplicados": 0.0
+    }
+}
