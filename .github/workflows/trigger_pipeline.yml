@@ -1,0 +1,25 @@
+name: Trigger Pipeline ETL
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'manifest.json'
+
+jobs:
+  deploy-and-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conectar a la VM y actualizar el repositorio
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd ~/pipeline/proyecto
+            git pull origin main
+            curl -X POST "http://localhost:8080/api/v2/dags/pipeline_etl/dagRuns" \
+              -H "Content-Type: application/json" \
+              -u "admin:bHRsAENDRwAg8vqZ" \
+              -d '{}'
