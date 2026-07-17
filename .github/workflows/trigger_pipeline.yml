@@ -19,7 +19,10 @@ jobs:
           script: |
             cd ~/pipeline/proyecto
             git pull origin main
+            TOKEN=$(curl -s -X POST "http://localhost:8080/auth/token" \
+              -H "Content-Type: application/json" \
+              -d '{"username": "admin", "password": "bHRsAENDRwAg8vqZ"}' | python3 -c "import sys, json; print(json.load(sys.stdin)['access_token'])")
             curl -X POST "http://localhost:8080/api/v2/dags/pipeline_etl/dagRuns" \
               -H "Content-Type: application/json" \
-              -u "admin:bHRsAENDRwAg8vqZ" \
-              -d '{}'
+              -H "Authorization: Bearer $TOKEN" \
+              -d '{"logical_date": null}'
