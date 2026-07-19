@@ -52,46 +52,7 @@ Los archivos de datos corresponden al dataset público **"Store Sales - Time Ser
 
 ## 3. Diagrama de arquitectura de la solución
 
-```
- ┌─────────────────────┐        push a manifest.json         ┌──────────────────────────┐
- │   Repositorio        │ ───────────────────────────────────▶ │     GitHub Actions       │
- │   GitHub (main)      │                                       │  (trigger_pipeline.yml)  │
- │  - dags/              │                                       └────────────┬─────────────┘
- │  - src/                │                                                    │ SSH
- │  - manifest.json       │                                                    ▼
- └─────────────────────┘                              ┌───────────────────────────────────┐
-                                                        │   Máquina Virtual (Azure)         │
-                                                        │   Ubuntu 24.04 LTS - Chile Central │
-                                                        │                                     │
-                                                        │  1. git pull (trae el código)      │
-                                                        │  2. Solicita token de Airflow       │
-                                                        │  3. Dispara el DAG pipeline_etl      │
-                                                        │                                     │
-                                                        │  ┌───────────────────────────────┐  │
-                                                        │  │      Apache Airflow           │  │
-                                                        │  │  (servicio systemd permanente) │  │
-                                                        │  │                                 │  │
-                                                        │  │   DAG: pipeline_etl             │  │
-                                                        │  │   Tarea: ejecutar_pipeline_etl  │  │
-                                                        │  │     Carga → Limpieza →          │  │
-                                                        │  │     Transformación → Validación │  │
-                                                        │  │     → Exportación               │  │
-                                                        │  └───────────────┬─────────────────┘  │
-                                                        │                  │ write_database      │
-                                                        │                  ▼                     │
-                                                        │  ┌───────────────────────────────┐  │
-                                                        │  │        PostgreSQL 16          │  │
-                                                        │  │  Base: proyectoAnalisis         │  │
-                                                        │  │  Tabla: ventas_limpia (3M filas)│  │
-                                                        │  └───────────────┬─────────────────┘  │
-                                                        └──────────────────┼─────────────────────┘
-                                                                           │ conexión remota (5432)
-                                                                           ▼
-                                                        ┌───────────────────────────────────┐
-                                                        │        Power BI Desktop            │
-                                                        │   Dashboard de análisis de ventas   │
-                                                        └───────────────────────────────────┘
-```
+![Diagrama de arquitectura](Diagrama_de_arquitectura.jpeg)
 
 ### Componentes de infraestructura
 
