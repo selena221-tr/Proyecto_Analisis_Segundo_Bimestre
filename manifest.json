@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "last_updated": "2026-07-20",
   "status": "pipeline funcionando con exportacion a postgres optimizada"
 }
