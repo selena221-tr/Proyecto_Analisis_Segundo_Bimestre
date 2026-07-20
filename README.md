@@ -54,6 +54,7 @@ Los archivos de datos corresponden al dataset público **"Store Sales - Time Ser
 
 ![Diagrama de arquitectura](capturas/01_diagrama_de_arquitectura.jpeg)
 
+
 ### Componentes de infraestructura
 
 | Componente | Detalle |
@@ -222,8 +223,6 @@ Se estableció la conexión entre Power BI Desktop y la base de datos PostgreSQL
 **Conexión exitosa y detección de la tabla `ventas_limpia`:**
 
 ![Conexión de Power BI a PostgreSQL](capturas/05_powerbi_conexion_tabla.png)
-
-
 
 > Nota de seguridad: se dejó constancia de la advertencia emitida por Azure respecto a la exposición del puerto 5432 a internet. Para un entorno de producción real se recomienda restringir el origen permitido a IPs específicas y reforzar la contraseña de la base de datos; para efectos de este proyecto académico se mantuvo abierto para facilitar el acceso del equipo de trabajo.
 
