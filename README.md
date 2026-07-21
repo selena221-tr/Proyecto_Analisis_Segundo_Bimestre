@@ -1,4 +1,4 @@
-# Proyecto de Análisis - Segundo Bimestre
+# Proyecto de Análisis - Segundo Bimestre para sacar 20
 
 Pipeline de datos ETL orquestado con Apache Airflow, desplegado en una máquina virtual de Azure, con integración continua mediante GitHub Actions y visualización final en Power BI.
 
