@@ -16,7 +16,7 @@ Se optó por una arquitectura reproducible y automatizada, en la que:
 - Se utilizó **Apache Airflow** como orquestador del pipeline, encargado de ejecutar las etapas de carga, limpieza, transformación, validación y exportación como un DAG único.
 - Se desplegó toda la infraestructura sobre una **máquina virtual Ubuntu 24.04 LTS en Microsoft Azure**, dentro del plan de suscripción "Azure for Students".
 - Se configuró **GitHub Actions** para disparar automáticamente la ejecución del pipeline cada vez que se actualiza el archivo `manifest.json` en la rama principal del repositorio, cumpliendo con el requisito de automatización de la entrega.
-- Se conectó **Power BI Desktop** directamente a la base de datos PostgreSQL alojada en la VM, para la construcción del dashboard final.
+- Se conectó **Power BI Desktop** directamente a la base de datos PostgreSQL alojada en la VM, para la construcción del dashboard final
 
 El resultado es un flujo de trabajo en el que el equipo puede actualizar el código o señalar una nueva ejecución mediante un simple `git push`, sin necesidad de intervención manual sobre el servidor.
 
@@ -96,7 +96,7 @@ No existen dependencias entre tareas dentro del DAG, ya que todo el flujo del pi
 
 ### Configuración relevante aplicada sobre la tarea
 
-- Se configuró `do_xcom_push=False` para evitar que Airflow intente serializar en XCom los DataFrames completos devueltos por la función (lo cual generaba errores de validación por tratarse de objetos binarios no serializables a JSON).
+-Se configuró el parámetro do_xcom_push=False con el fin de evitar que Airflow intentara enviar a XCom los DataFrames completos retornados por la función. Esta medida previene errores de validación, debido a que estos objetos no son serializables al formato JSON requerido por XCom.
 
 ### Configuración del entorno de Airflow
 
