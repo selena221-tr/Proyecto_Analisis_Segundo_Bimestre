@@ -1,10 +1,7 @@
 name: Trigger Pipeline ETL
-
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'manifest.json'
 
 jobs:
   deploy-and-trigger:
